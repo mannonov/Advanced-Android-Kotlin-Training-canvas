@@ -18,13 +18,14 @@
         android:layout_height="0dp"
         android:layout_weight=".1"
         android:orientation="horizontal"
+        android:background="#4A4A4A"
         >
         <Button
             android:id="@+id/btn_red"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight=".1"
-            android:text="WHITE"
+            android:text="RED"
             />
         <Button
             android:id="@+id/btn_black"

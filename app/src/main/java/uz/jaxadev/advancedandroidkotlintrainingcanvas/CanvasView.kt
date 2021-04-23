@@ -1,8 +1,5 @@
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
@@ -74,17 +71,22 @@ class CanvasView(context: Context) : View(context) {
     }
 
     private fun touchStart() {
-            path.reset()
-            path.moveTo(motionTouchEventX, motionTouchEventY)
-            currentX = motionTouchEventX
-            currentY = motionTouchEventY
+        path.reset()
+        path.moveTo(motionTouchEventX, motionTouchEventY)
+        currentX = motionTouchEventX
+        currentY = motionTouchEventY
     }
 
     private fun touchMove() {
         val dx = Math.abs(motionTouchEventX - currentX)
         val dy = Math.abs(motionTouchEventY - currentY)
         if (dx >= touchTolerance || dy >= touchTolerance) {
-            path.quadTo(currentX, currentY, (motionTouchEventX + currentX) / 2, (motionTouchEventY + currentY) / 2)
+            path.quadTo(
+                currentX,
+                currentY,
+                (motionTouchEventX + currentX) / 2,
+                (motionTouchEventY + currentY) / 2
+            )
             currentX = motionTouchEventX
             currentY = motionTouchEventY
             extraCanvas.drawPath(path, paint)
@@ -94,6 +96,10 @@ class CanvasView(context: Context) : View(context) {
 
     private fun touchUp() {
         path.reset()
+    }
+
+    fun setColor(color: Int) {
+        paint.color = color
     }
 
 
